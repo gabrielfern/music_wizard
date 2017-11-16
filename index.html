@@ -1,0 +1,78 @@
+<!doctype html>
+<html ng-app='music-wizard'>
+    <head>
+        <title>Music Wizard</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="assets/icon.png" rel="shortcut icon" type="image/png"/>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css'/>
+        <link rel='stylesheet' href='http://getbootstrap.com/docs/4.0/examples/narrow-jumbotron/narrow-jumbotron.css'/>
+
+        <script src='https://code.angularjs.org/1.6.6/angular.min.js'></script>
+        <script src='https://code.angularjs.org/1.6.6/angular-route.min.js'></script>
+
+        <script src='js/config.js'></script>
+
+        <script src='js/controllers/header.js'></script>
+        <script src='js/controllers/add_artista.js'></script>
+        <script src='js/services/artista.js'></script>
+        <script src='js/services/artistas.js'></script>
+    </head>
+
+    <body style='background-color: #0c1219'>
+        <div class='container'>
+            <header class="header clearfix" ng-controller='header'>
+              <nav>
+                <ul class="nav nav-pills float-right">
+                  <li class="nav-item">
+                    <a href='/#!/' id='nav-home' class="nav-link {{home}}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href='/#!/about' id='nav-about' class="nav-link {{about}}">About</a>
+                  </li>
+                </ul>
+              </nav>
+              <h3 class="text-muted">Music Wizard</h3>
+            </header>
+
+            <div ng-view>
+            </div>
+
+            <footer class='footer'>
+                <p>&copy; Gabriel Fernandes 2017</p>
+            </footer>
+        </div>
+
+        <script>
+            function setNavBarActive(active) {
+                let navHome = document.getElementById('nav-home')
+                let navAbout = document.getElementById('nav-about')
+
+                function setNavHomeActive(boolean) {
+                    if (boolean)
+                        navHome.classList.add('active')
+                    else
+                        navHome.classList.remove('active')
+                }
+                function setNavAboutActive(boolean) {
+                    if (boolean)
+                        navAbout.classList.add('active')
+                    else
+                        navAbout.classList.remove('active')
+                }
+
+                if (active == 'home') {
+                    setNavHomeActive(true)
+                    setNavAboutActive(false)
+                } else if (active == 'about') {
+                    setNavHomeActive(false)
+                    setNavAboutActive(true)
+                } else {
+                    setNavHomeActive(false)
+                    setNavAboutActive(false)
+                }
+            }
+        </script>
+    </body>
+</html>

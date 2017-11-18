@@ -43,43 +43,11 @@
               <h3 class="text-muted">Music Wizard</h3>
             </header>
 
-            <div ng-view>
-            </div>
+            <div ng-view></div>
 
             <footer class='footer'>
                 <p>&copy; Gabriel Fernandes 2017</p>
             </footer>
         </div>
-
-        <script>
-            function setNavBarActive(active) {
-                let navHome = document.getElementById('nav-home')
-                let navAbout = document.getElementById('nav-about')
-
-                function setNavHomeActive(boolean) {
-                    if (boolean)
-                        navHome.classList.add('active')
-                    else
-                        navHome.classList.remove('active')
-                }
-                function setNavAboutActive(boolean) {
-                    if (boolean)
-                        navAbout.classList.add('active')
-                    else
-                        navAbout.classList.remove('active')
-                }
-
-                if (active == 'home') {
-                    setNavHomeActive(true)
-                    setNavAboutActive(false)
-                } else if (active == 'about') {
-                    setNavHomeActive(false)
-                    setNavAboutActive(true)
-                } else {
-                    setNavHomeActive(false)
-                    setNavAboutActive(false)
-                }
-            }
-        </script>
     </body>
 </html>

@@ -1,0 +1,31 @@
+<div class='jumbotron'>
+    <h2>Adicionar música</h2>
+    <div class='form-group'>
+        <input type='text' class='form-control' placeholder='Nome' ng-model='musica'>
+    </div>
+
+    <div class='form-group'>
+        <select class='form-control' ng-model='artista' ng-options='artista.nome for artista in artistas'>
+            <option value=''>Artista</option>
+        </select>
+    </div>
+
+    <div class='form-group'>
+        <input type='text' class='form-control' placeholder='Album' ng-model='album'>
+    </div>
+    <div class='form-group'>
+        <input type='text' class='form-control' placeholder='Ano de lançamento' ng-model='ano'>
+    </div>
+    <div class='form-group'>
+        <input type='text' class='form-control' placeholder='Duração' ng-model='duracao'>
+    </div>
+
+    <div ng-show='addFalha' class='alert alert-danger'>
+        Música já existe nesse álbum
+    </div>
+    <div ng-show='addSucesso' class='alert alert-success'>
+        Música adicionada com sucesso
+    </div>
+    <a href='/#!/'><button type='submit' class='btn btn-danger'>Cancelar</button></a>
+    <button type='submit' class='btn btn-success' ng-disabled='bloqAddButton' ng-click='addMusica()'>Confirmar</button>
+</div>

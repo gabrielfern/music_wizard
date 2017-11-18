@@ -13,14 +13,14 @@ app.controller('add-artista', function($scope, artistas) {
             setTimeout(function() {
                 $scope.addSucesso = false
                 $scope.$apply()
-            }, 3000)
+            }, 4000)
         }
         else {
             $scope.addFalha = true
             setTimeout(function() {
                 $scope.addFalha = false
                 $scope.$apply()
-            }, 3000)
+            }, 4000)
         }
         $scope.artistaNome = $scope.artistaImgUrl = ''
     }

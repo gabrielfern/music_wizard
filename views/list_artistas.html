@@ -1,2 +1,6 @@
-<div>
+<div class='jumbotron'>
+    <h2>Lista de artistas cadastrados no sistema</h2>
+    <div class='list-group'>
+      <a href='/#!/artista/{{artista.nome}}' class='list-group-item list-group-item-action' ng-repeat='artista in artistas'>{{artista.nome}}</a>
+    </div>
 </div>

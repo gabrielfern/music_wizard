@@ -1,0 +1,16 @@
+<div class='jumbotron'>
+    <h2>Músicas do album "{{album.nome}}"</h2>
+    <hr>
+    <div class='list-group'>
+        <div ng-repeat='alb in album.musicas'>
+            <div class='list-group-item list-group-item-action'>
+                <div class='list-group'>
+                    <p class='list-group-item list-group-item-action'>{{alb.nome}}</p>
+                    <p class='list-group-item list-group-item-action'>{{alb.ano}}</p>
+                    <p class='list-group-item list-group-item-action'>{{alb.duracao}}</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

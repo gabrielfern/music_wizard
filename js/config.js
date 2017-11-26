@@ -35,6 +35,12 @@ app.config(function($routeProvider) {
         activeTab: 'none'
     })
 
+    $routeProvider.when('/artista/:nome/:album', {
+        templateUrl: '/views/list_musicas.html',
+        controller: 'list-musicas',
+        activeTab: 'none'
+    })
+
     $routeProvider.otherwise({
         redirectTo: "/"
     })

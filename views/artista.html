@@ -4,6 +4,14 @@
 
     <hr>
 
+    <h3>Nota do artista</h3>
+    <div class='form-group'>
+        <select class='form-control' ng-model='nota' ng-options='nota for nota in [1, 2, 3, 4, 5]'>
+        </select>
+    </div>
+
+    <hr>
+
     <h3>Ultima música ouvida desse artista</h3>
     <div class='form-group'>
         <select class='form-control' ng-model='musica' ng-options='musica.nome for musica in musicas'>

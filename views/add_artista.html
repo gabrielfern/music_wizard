@@ -8,12 +8,13 @@
     </div>
     <p class='text-muted'>*url opcional</p>
 
-    <div ng-show='addFalha' class='alert alert-danger'>
-        Artista já cadastrado
+    <div ng-show='showAlert' class="alert alert-{{alertType}}" role="alert">
+      {{alertMsg}}
+        <button type="button" class="close" aria-label="Close" ng-click='closeAlert()'>
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-    <div ng-show='addSucesso' class='alert alert-success'>
-        Artista adicionado
-    </div>
+
     <a href='/#!/'><button type='submit' class='btn btn-danger'>Cancelar</button></a>
     <button type='submit' class='btn btn-success' ng-disabled='!artistaNome' ng-click='addArtista()'>Confirmar</button>
 </div>

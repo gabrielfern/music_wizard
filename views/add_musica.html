@@ -20,12 +20,13 @@
         <input type='text' class='form-control' placeholder='Duração' ng-model='duracao'>
     </div>
 
-    <div ng-show='addFalha' class='alert alert-danger'>
-        Música já existe nesse álbum
+    <div ng-show='showAlert' class="alert alert-{{alertType}}" role="alert">
+      {{alertMsg}}
+        <button type="button" class="close" aria-label="Close" ng-click='closeAlert()'>
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-    <div ng-show='addSucesso' class='alert alert-success'>
-        Música adicionada com sucesso
-    </div>
+
     <a href='/#!/'><button type='submit' class='btn btn-danger'>Cancelar</button></a>
     <button type='submit' class='btn btn-success' ng-disabled='bloqAddButton' ng-click='addMusica()'>Confirmar</button>
 </div>

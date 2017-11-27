@@ -1,6 +1,7 @@
 app.controller('add-musica', function($scope, artistas) {
-    $scope.addFalha = false
-    $scope.addSucesso = false
+    $scope.showAlert = false
+    $scope.alertType = ''
+    $scope.alertMsg = ''
     $scope.artistas = artistas.artistas
     $scope.bloqAddButton = true
 
@@ -13,20 +14,19 @@ app.controller('add-musica', function($scope, artistas) {
         let result = artistas.addMusica($scope.musica, $scope.artista.nome, $scope.album, $scope.ano, $scope.duracao)
 
         if (result) {
-            $scope.addSucesso = true
-            setTimeout(function() {
-                $scope.addSucesso = false
-                $scope.$apply()
-            }, 4000)
+            $scope.alertType = 'success'
+            $scope.showAlert = true
+            $scope.alertMsg = 'Música adicionada com sucesso'
         }
         else {
-            $scope.addFalha = true
-            setTimeout(function() {
-                $scope.addFalha = false
-                $scope.$apply()
-            }, 4000)
+            $scope.alertType = 'danger'
+            $scope.showAlert = true
+            $scope.alertMsg = 'Música já existe nesse álbum'
         }
 
         $scope.musica = $scope.album = $scope.ano = $scope.duracao = ''
+    }
+    $scope.closeAlert = function() {
+        $scope.showAlert = false
     }
 })

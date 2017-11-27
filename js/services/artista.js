@@ -3,6 +3,7 @@ app.service('artista', function(album) {
         this.nome = nome
         this.url = url || ''
         this.albuns = []
+        this.ultimaOuvida = {}
 
         this.addMusica = function(nome, albumName, ano, duracao) {
             index = this.indexOf(albumName)
@@ -19,6 +20,13 @@ app.service('artista', function(album) {
                     return i
             }
             return -1
+        }
+        this.getMusicas = function() {
+            let musicas = []
+            for (let album of this.albuns) {
+                musicas.push(...album.musicas)
+            }
+            return musicas
         }
     }
 })

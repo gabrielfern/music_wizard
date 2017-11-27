@@ -4,6 +4,14 @@
 
     <hr>
 
+    <h3>Ultima música ouvida desse artista</h3>
+    <div class='form-group'>
+        <select class='form-control' ng-model='musica' ng-options='musica.nome for musica in musicas'>
+        </select>
+    </div>
+
+    <hr>
+
     <h2>Albuns de "{{artista.nome}}"</h2>
     <div class='list-group'>
       <a href='/#!/artista/{{artista.nome}}/{{album.nome}}' class='list-group-item list-group-item-action' ng-repeat='album in artista.albuns'>{{album.nome}}</a>

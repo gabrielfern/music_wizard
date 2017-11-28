@@ -1,4 +1,4 @@
-app.service('playlists', function(playlist) {
+app.service('playlists', function(artistas, playlist) {
     this.playlists = []
 
     this.indexOf = function(nome) {

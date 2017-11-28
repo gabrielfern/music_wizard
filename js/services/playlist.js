@@ -1,4 +1,4 @@
-app.service('playlist', function(album) {
+app.service('playlist', function() {
     return function(nome) {
         this.nome = nome
         this.musicas = []

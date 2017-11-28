@@ -1,0 +1,16 @@
+<div class='jumbotron'>
+    <h2>Adicionar playlist</h2>
+    <div class='form-group'>
+        <input type='text' class='form-control' placeholder='Nome da Playlist' ng-model='playlistNome'>
+    </div>
+
+    <div ng-show='showAlert' class='alert alert-{{alertType}}' role='alert'>
+      {{alertMsg}}
+        <button type='button' class='close' aria-label='Close' ng-click='closeAlert()'>
+            <span aria-hidden='true'>&times;</span>
+        </button>
+    </div>
+
+    <a href='/#!/'><button type='submit' class='btn btn-danger'>Cancelar</button></a>
+    <button type='submit' class='btn btn-success' ng-disabled='!playlistNome' ng-click='addPlaylist()'>Confirmar</button>
+</div>

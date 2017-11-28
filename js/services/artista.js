@@ -7,13 +7,13 @@ app.service('artista', function(album) {
         this.ultimaOuvida = {}
         this.favorito = false
 
-        this.addMusica = function(nome, albumName, ano, duracao) {
-            index = this.indexOf(albumName)
+        this.addMusica = function(nome, artista, albumNome, ano, duracao) {
+            index = this.indexOf(albumNome)
             if (index > -1) {
-                return this.albuns[index].addMusica(nome, ano, duracao)
+                return this.albuns[index].addMusica(nome, artista, albumNome, ano, duracao)
             } else {
-                this.albuns.push(new album(albumName))
-                return this.albuns[this.albuns.length-1].addMusica(nome, ano, duracao)
+                this.albuns.push(new album(albumNome))
+                return this.albuns[this.albuns.length-1].addMusica(nome, artista, albumNome, ano, duracao)
             }
         }
         this.indexOf = function(nome) {

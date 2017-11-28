@@ -8,4 +8,18 @@ app.service('playlists', function(artistas, playlist) {
         }
         return -1
     }
+    this.addPlaylist = function(nome) {
+        let index = this.indexOf(nome)
+        if (index > -1)
+            return false
+        this.playlists.push(new playlist(nome))
+        return true
+    }
+    this.remPlaylist = function(nome) {
+        let index = this.indexOf(nome)
+        if (index < 0)
+            return false
+        this.playlists.splice(index, 1)
+        return true
+    }
 })

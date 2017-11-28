@@ -3,11 +3,11 @@ app.service('album', function(musica) {
         this.nome = nome
         this.musicas = []
 
-        this.addMusica = function(nome, ano, duracao) {
+        this.addMusica = function(nome, artista, album, ano, duracao) {
             let index = this.indexOf(nome)
             if (index > -1)
                 return false
-            this.musicas.push(new musica(nome, ano, duracao))
+            this.musicas.push(new musica(nome, artista, album, ano, duracao))
             return true
         }
         this.indexOf = function(nome) {

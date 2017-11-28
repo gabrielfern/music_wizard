@@ -1,3 +1,2 @@
-app.controller('list-playlists', function($scope, artistas) {
-    console.log('playlists')
+app.controller('list-playlists', function($scope, playlists) {
 })

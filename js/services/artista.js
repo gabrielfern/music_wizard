@@ -5,6 +5,7 @@ app.service('artista', function(album) {
         this.albuns = []
         this.nota = -1
         this.ultimaOuvida = {}
+        this.favorito = false
 
         this.addMusica = function(nome, albumName, ano, duracao) {
             index = this.indexOf(albumName)

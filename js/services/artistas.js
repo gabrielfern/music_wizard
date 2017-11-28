@@ -19,4 +19,12 @@ app.service('artistas', function(artista) {
         index = this.indexOf(artista)
         return this.artistas[index].addMusica(nome, album, ano, duracao)
     }
+    this.getFavoritos = function() {
+        let favoritos = []
+        for (let artista of this.artistas) {
+            if (artista.favorito)
+                favoritos.push(artista)
+        }
+        return favoritos
+    }
 })

@@ -4,6 +4,13 @@
 
     <hr>
 
+    <div class='form-group'>
+        <input type='checkbox' ng-model='favorito'>
+        <span class="badge badge-warning">Favorito</span>
+    </div>
+
+    <hr>
+
     <h3>Nota do artista</h3>
     <div class='form-group'>
         <select class='form-control' ng-model='nota' ng-options='nota for nota in [1, 2, 3, 4, 5]'>

@@ -18,6 +18,12 @@ app.config(function($routeProvider) {
         activeTab: 'none'
     })
 
+    $routeProvider.when('/list_favoritos', {
+        templateUrl: '/views/list_favoritos.html',
+        controller: 'list-favoritos',
+        activeTab: 'none'
+    })
+
     $routeProvider.when('/about', {
         templateUrl: '/views/about.html',
         activeTab: 'about'

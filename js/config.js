@@ -24,6 +24,18 @@ app.config(function($routeProvider) {
         activeTab: 'none'
     })
 
+    $routeProvider.when('/add_playlist', {
+        templateUrl: '/views/add_playlist.html',
+        controller: 'add-playlist',
+        activeTab: 'none'
+    })
+
+    $routeProvider.when('/list_playlists', {
+        templateUrl: '/views/list_playlists.html',
+        controller: 'list-playlists',
+        activeTab: 'none'
+    })
+
     $routeProvider.when('/about', {
         templateUrl: '/views/about.html',
         activeTab: 'about'

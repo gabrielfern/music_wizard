@@ -4,10 +4,11 @@
 
     <hr>
 
-    <div class='form-group'>
-        <input type='checkbox' ng-model='favorito'>
-        <span class="badge badge-warning">Favorito</span>
-    </div>
+    <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+        <input type="checkbox" class="custom-control-input" ng-model='favorito'>
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description badge badge-warning">Artista Favorito</span>
+    </label>
 
     <hr>
 
@@ -27,7 +28,7 @@
 
     <hr>
 
-    <h2>Albuns de "{{artista.nome}}"</h2>
+    <h2>Álbuns de "{{artista.nome}}"</h2>
     <div class='list-group'>
       <a href='/#!/artista/{{artista.nome}}/{{album.nome}}' class='list-group-item list-group-item-action' ng-repeat='album in artista.albuns'>{{album.nome}}</a>
     </div>

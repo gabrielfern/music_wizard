@@ -1,0 +1,15 @@
+<div class='jumbotron'>
+    <h2>Lista de playlists cadastradas no sistema</h2>
+    <hr>
+
+    <ul class='list-group'>
+        <li class='list-group-item d-flex justify-content-between align-items-center' ng-repeat='playlist in playlists'>
+            {{playlist.nome}}
+            <span>
+                <span class='badge badge-primary badge-pill'>{{playlist.musicas.length}}</span>
+                <span class='badge badge-danger badge' style='cursor: pointer' ng-click='remPlaylist(playlist.nome)'>Deletar</span>
+            </span>
+        </li>
+    </ul>
+
+</div>

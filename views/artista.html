@@ -5,10 +5,26 @@
     <hr>
 
     <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-        <input type="checkbox" class="custom-control-input" ng-model='favorito'>
+        <input type="checkbox" class="custom-control-input" ng-model='favorito' ng-click='favoritar()'>
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description badge badge-warning">Artista Favorito</span>
     </label>
+
+    <div class="modal fade" id="favoritoModal" tabindex="-1" role="dialog" aria-labelledby="favoritoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="favoritoModalLabel">Deseja realmente desfavoritar o artista "{{artista.nome}}"?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click='desfavoritar()'>Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <hr>
 

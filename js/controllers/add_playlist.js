@@ -24,6 +24,4 @@ app.controller('add-playlist', function($scope, playlists) {
     $scope.closeAlert = function() {
         $scope.showAlert = false
     }
-
-    global = playlists
 })

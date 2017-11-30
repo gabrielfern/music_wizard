@@ -5,7 +5,6 @@ app.controller('playlist', function($scope, $routeParams, playlists) {
     $scope.albuns = []
     $scope.musicas = []
     $scope.bloqAddButton = true
-    global = $scope //
 
     $scope.$watch('artista', function() {
         if ($scope.artista)

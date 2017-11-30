@@ -4,10 +4,10 @@
 
     <ul class='list-group'>
         <li class='list-group-item d-flex justify-content-between align-items-center' ng-repeat='playlist in playlists'>
-            {{playlist.nome}}
+            <a href='/#!/playlist/{{playlist.nome}}' class='list-group-item list-group-item-action'>{{playlist.nome}}</a>
             <span>
                 <span class='badge badge-primary badge-pill'>{{playlist.musicas.length}}</span>
-                <span class='badge badge-danger badge' style='cursor: pointer' ng-click='setRemPlaylistNome(playlist.nome)' data-toggle="modal" data-target="#deletePlaylistModal">Deletar</span>
+                <span class='badge badge-danger' style='cursor: pointer' ng-click='setRemPlaylistNome(playlist.nome)' data-toggle="modal" data-target="#deletePlaylistModal">Deletar</span>
             </span>
         </li>
     </ul>
@@ -22,7 +22,7 @@
                     </button>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click='remPlaylist()'>Deletar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click='remPlaylist()'>Sim</button>
                 </div>
             </div>
         </div>

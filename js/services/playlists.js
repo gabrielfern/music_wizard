@@ -22,4 +22,7 @@ app.service('playlists', function(artistas, playlist) {
         this.playlists.splice(index, 1)
         return true
     }
+    this.getArtistas = function() {
+        return artistas.artistas
+    }
 })

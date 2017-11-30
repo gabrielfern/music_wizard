@@ -36,6 +36,12 @@ app.config(function($routeProvider) {
         activeTab: 'none'
     })
 
+    $routeProvider.when('/playlist/:nome', {
+        templateUrl: '/views/playlist.html',
+        controller: 'playlist',
+        activeTab: 'none'
+    })
+
     $routeProvider.when('/about', {
         templateUrl: '/views/about.html',
         activeTab: 'about'

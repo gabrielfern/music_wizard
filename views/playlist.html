@@ -1,0 +1,74 @@
+<div class='jumbotron'>
+    <h2>{{playlist.nome}}</h2>
+    <span>
+        <span class='badge badge-success' style='cursor: pointer' data-toggle="modal" data-target="#addMusicPlaylistModal">Adicionar</span>
+    </span>
+
+    <hr>
+
+    <div class='list-group'>
+        <div class="list-group-item flex-column align-items-start" ng-repeat='musica in playlist.musicas'>
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{musica.nome}}</h5>
+                <small>nome</small>
+            </div>
+            <div class="d-flex w-100 justify-content-between">
+                <a href='/#!/artista/{{musica.artista}}' class="mb-1">{{musica.artista}}</a>
+                <small>artista</small>
+            </div>
+            <div class="d-flex w-100 justify-content-between">
+                <a href='/#!/artista/{{musica.artista}}/{{musica.album}}' class="mb-1">{{musica.album}}</a>
+                <small>album</small>
+            </div>
+            <span>
+                <span class='badge badge-danger' style='cursor: pointer' ng-click='setMusicToDelete(musica.nome, musica.artista, musica.album)' data-toggle="modal" data-target="#deleteMusicPlaylistModal">Deletar</span>
+            </span>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addMusicPlaylistModal" tabindex="-1" role="dialog" aria-labelledby="addMusicPlaylistModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addMusicPlaylistModalLabel">Adicionar musica a "{{playlist.nome}}"</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <select class='form-control' ng-model='artista' ng-options='artista.nome for artista in artistas'>
+                  <option value=''>Artista</option>
+              </select>
+              <hr>
+              <select class='form-control' ng-model='album' ng-options='album.nome for album in albuns'>
+                  <option value=''>Album</option>
+              </select>
+              <hr>
+              <select class='form-control' ng-model='musica' ng-options='musica.nome for musica in musicas'>
+                  <option value=''>Musica</option>
+              </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal" ng-disabled='bloqAddButton' ng-click='adicionar()'>Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="deleteMusicPlaylistModal" tabindex="-1" role="dialog" aria-labelledby="deleteMusicPlaylistModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteMusicPlaylistModalLabel">Deseja realmente deletar a musica "{{musicToDelete.nome}}" dessa playlist?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click='deletar()'>Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

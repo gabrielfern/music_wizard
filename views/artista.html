@@ -38,8 +38,12 @@
 
     <h3>Ultima música ouvida desse artista</h3>
     <div class='form-group'>
-        <select class='form-control' ng-model='musica' ng-options='musica.nome for musica in musicas'>
+        <select class='form-control' ng-model='album' ng-options='album.nome for album in artista.albuns'>
         </select>
+        <p class='text-muted'>album</p>
+        <select class='form-control' ng-model='musica' ng-options='musica.nome for musica in album.musicas'>
+        </select>
+        <p class='text-muted'>musica</p>
     </div>
 
     <hr>

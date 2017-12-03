@@ -52,4 +52,9 @@
     <div class='list-group'>
       <a href='/#!/artista/{{artista.nome}}/{{album.nome}}' class='list-group-item list-group-item-action' ng-repeat='album in artista.albuns'>{{album.nome}}</a>
     </div>
+    <div ng-hide='artista.albuns.length' class='alert alert-primary'>
+        Nenhum álbum desse artista cadastrado no sistema ainda
+        <hr>
+        <a href="/#!/add_musica">Adicione uma música</a>
+    </div>
 </div>

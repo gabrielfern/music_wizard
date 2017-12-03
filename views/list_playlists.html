@@ -12,6 +12,12 @@
         </li>
     </ul>
 
+    <div ng-hide='playlists.length' class='alert alert-primary'>
+        Nenhuma playlist cadastrada no sistema ainda
+        <hr>
+        <a href="/#!/add_playlist">Adicione uma playlist</a>
+    </div>
+
     <div class="modal fade" id="deletePlaylistModal" tabindex="-1" role="dialog" aria-labelledby="deletePlaylistModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

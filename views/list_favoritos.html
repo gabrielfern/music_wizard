@@ -4,4 +4,8 @@
     <div class='list-group'>
       <a href='/#!/artista/{{favorito.nome}}' class='list-group-item list-group-item-action' ng-repeat='favorito in favoritos'>{{favorito.nome}}</a>
     </div>
+
+    <div ng-hide='favoritos.length' class='alert alert-primary'>
+        Nenhum favorito cadastrado no sistema ainda
+    </div>
 </div>

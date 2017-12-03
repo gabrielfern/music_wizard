@@ -6,6 +6,10 @@
 
     <hr>
 
+    <div ng-hide='playlist.musicas.length' class='alert alert-primary'>
+        Nenhuma música adicionada nessa playlist ainda
+    </div>
+
     <div class='list-group'>
         <div class="list-group-item flex-column align-items-start" ng-repeat='musica in playlist.musicas'>
             <div class="d-flex w-100 justify-content-between">

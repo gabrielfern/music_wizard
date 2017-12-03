@@ -4,4 +4,9 @@
     <div class='list-group'>
       <a href='/#!/artista/{{artista.nome}}' class='list-group-item list-group-item-action' ng-repeat='artista in artistas'>{{artista.nome}}</a>
     </div>
+    <div ng-hide='artistas.length' class='alert alert-primary'>
+        Nenhum artista cadastrado no sistema ainda
+        <hr>
+        <a href="/#!/add_artist">Adicione um artista</a>
+    </div>
 </div>

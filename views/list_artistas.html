@@ -1,15 +1,19 @@
 <div class='jumbotron'>
     <h2>Lista de artistas cadastrados no sistema</h2>
     <hr>
+
     <div ng-show='artistas.length' class='form-group'>
         <input type='text' class='form-control' placeholder='pesquisar artista' ng-model='artistaPesquisa'>
     </div>
-    <div ng-show='artistas.length && !artistasToShow.length' class='alert alert-warning'>
+
+    <div class='list-group'>
+      <a href='/#!/artista/{{artista.nome}}' class='list-group-item list-group-item-action' ng-repeat='artista in artistas | filter: artistaPesquisa as artistasFiltrados'>{{artista.nome}}</a>
+    </div>
+
+    <div ng-show='artistas.length && !artistasFiltrados.length' class='alert alert-warning'>
         Nenhum artista encontrado
     </div>
-    <div class='list-group'>
-      <a href='/#!/artista/{{artista.nome}}' class='list-group-item list-group-item-action' ng-repeat='artista in artistasToShow'>{{artista.nome}}</a>
-    </div>
+
     <div ng-hide='artistas.length' class='alert alert-primary'>
         Nenhum artista cadastrado no sistema ainda
         <hr>

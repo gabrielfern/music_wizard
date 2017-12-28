@@ -1,0 +1,18 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE")
+}
+
+jar {
+	manifest {
+		attributes 'Main-Class': 'Wizard'
+	}
+}
+
+mainClassName = 'Wizard'

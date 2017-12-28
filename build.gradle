@@ -1,18 +1,25 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
 apply plugin: 'java'
-apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE")
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-devtools:$springBootVersion"
+    runtime 'org.postgresql:postgresql:42.1.1'
 }
-
-jar {
-	manifest {
-		attributes 'Main-Class': 'Wizard'
-	}
-}
-
-mainClassName = 'Wizard'

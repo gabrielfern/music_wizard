@@ -1,2 +1,5 @@
-# music_wizard
-Lab 1 - SI1 - cc/UFCG
+Sistema web dos labs de SI (todos aqui, de forma incremental)
+
+# Para rodar
+
+    gradle bootRun

@@ -1,0 +1,12 @@
+package io.wizard.music.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import io.wizard.music.services.UsuarioService;
+
+@Controller
+public class UsuarioController {
+	@Autowired
+	UsuarioService usuarios;
+}

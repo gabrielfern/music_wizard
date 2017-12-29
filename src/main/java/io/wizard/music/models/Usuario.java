@@ -25,6 +25,18 @@ public class Usuario {
 	private String playlists;
 
 
+	public Usuario() {
+		
+	}
+	
+	public Usuario(String nome, String email, String senha, String artistas, String playlists) {
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.artistas = artistas;
+		this.playlists = playlists;
+	}
+
 	public String getNome() {
 		return nome;
 	}

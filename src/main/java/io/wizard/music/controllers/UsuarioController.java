@@ -1,55 +1,44 @@
 package io.wizard.music.controllers;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import io.wizard.music.Response;
 import io.wizard.music.models.Usuario;
 import io.wizard.music.services.UsuarioService;
 
 
-@Controller
+@RestController
 public class UsuarioController {
 
 	@Autowired
 	UsuarioService usuarioService;
 
 
-    @ResponseBody
     @RequestMapping("/api/has_user")
-    public Map<String, String> hasUser(@RequestBody Map<String, String> data) {
-    	Map<String, String> resp = new HashMap<>();
+    public Response hasUser(@RequestBody Map<String, String> data) {
     	if (usuarioService.hasUser(data.get("email")))
-    		resp.put("message", "ok");
-    	else
-    		resp.put("message", "user not found");
-    	return resp;
+    		return new Response("ok", null);
+    	return new Response("user not found", null);
     }
 
-    @ResponseBody
     @RequestMapping("/api/get_user")
-    public Usuario getUser(@RequestBody Map<String, String> data) {
-    	return usuarioService.getUser(data.get("email"));
+    public Response getUser(@RequestBody Map<String, String> data) {
+    	return new Response("ok", usuarioService.getUser(data.get("email")));
     }
 
-    @ResponseBody
     @RequestMapping("/api/add_user")
-    public boolean addUser(@RequestBody Map<String, String> data) {
+    public Response addUser(@RequestBody Map<String, String> data) {
     	try {
-    		Usuario user = new Usuario();
-    		user.setNome(data.get("nome"));
-    		user.setEmail(data.get("email"));
-    		user.setSenha(data.get("senha"));
-    		user.setArtistas(data.get("artistas"));
-    		user.setPlaylists(data.get("playlists"));
-    		usuarioService.addUser(user);
-            return true;
+    		usuarioService.addUser(new Usuario(data.get("nome"), data.get("email"), data.get("senha"),
+					data.get("artistas"), data.get("playlists")));
+            return new Response("ok", null);
     	} catch (Exception e) {
-			return false;
+			return new Response("error", null);
 		}
     }
 }

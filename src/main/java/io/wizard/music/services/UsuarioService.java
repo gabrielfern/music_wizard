@@ -18,7 +18,7 @@ public class UsuarioService {
 		return usuarioRepository.exists(email);
 	}
 
-    public Usuario getUser(String email){
+    public Usuario getUser(String email) {
         return usuarioRepository.findOne(email);
     }
 

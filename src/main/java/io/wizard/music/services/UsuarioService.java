@@ -14,6 +14,10 @@ public class UsuarioService {
 	UsuarioRepository usuarioRepository;
 
 
+	public boolean hasUser(String email) {
+		return usuarioRepository.exists(email);
+	}
+
     public Usuario getUser(String email){
         return usuarioRepository.findOne(email);
     }

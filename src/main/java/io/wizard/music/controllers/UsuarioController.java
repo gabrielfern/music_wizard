@@ -1,5 +1,6 @@
 package io.wizard.music.controllers;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,25 @@ public class UsuarioController {
 
 
     @ResponseBody
+    @RequestMapping("/api/has_user")
+    public Map<String, String> hasUser(@RequestBody Map<String, String> data) {
+    	Map<String, String> resp = new HashMap<>();
+    	if (usuarioService.hasUser(data.get("email")))
+    		resp.put("message", "ok");
+    	else
+    		resp.put("message", "user not found");
+    	return resp;
+    }
+
+    @ResponseBody
     @RequestMapping("/api/get_user")
-    Usuario getUser(@RequestBody Map<String, String> data) {
+    public Usuario getUser(@RequestBody Map<String, String> data) {
     	return usuarioService.getUser(data.get("email"));
     }
 
     @ResponseBody
     @RequestMapping("/api/add_user")
-    boolean addUser(@RequestBody Map<String, String> data) {
+    public boolean addUser(@RequestBody Map<String, String> data) {
     	try {
     		Usuario user = new Usuario();
     		user.setNome(data.get("nome"));

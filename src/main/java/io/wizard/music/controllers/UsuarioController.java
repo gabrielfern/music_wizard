@@ -48,7 +48,7 @@ public class UsuarioController {
     		data.get("senha") == null || data.get("senha").equals(""))
     		return new Response("user name, email or senha invalid", null);
     	if (usuarioService.addUser(new Usuario(data.get("nome"), 
-    			data.get("email"), data.get("senha"), "{}", "{}")))
+    			data.get("email"), data.get("senha"), "", "")))
     		return new Response("ok", null);
     	return new Response("user exists", null);
     }

@@ -18,18 +18,27 @@ public class UsuarioService {
 		return usuarioRepository.exists(email);
 	}
 	
-	public boolean autentica(String email, String senha) {
-		Usuario user = usuarioRepository.findOne(email);
-		if (user.getSenha().equals(senha))
-			return true;
-		return false;
-	}
-
-    public Usuario getUser(String email) {
+    private Usuario getUser(String email) {
         return usuarioRepository.findOne(email);
     }
 
-	public void addUser(Usuario user) {
+    public Usuario getUser(String email, String senha) {
+        if (this.autentica(email, senha))
+        	return this.getUser(email);
+        return null;
+    }
+
+	public boolean autentica(String email, String senha) {
+		if (this.hasUser(email))
+			if (this.getUser(email).getSenha().equals(senha))
+				return true;
+		return false;
+	}
+
+	public boolean addUser(Usuario user) {
+		if (this.hasUser(user.getEmail()))
+			return false;
 		usuarioRepository.save(user);
+		return true;
 	}
 }

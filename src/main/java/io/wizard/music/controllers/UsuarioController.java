@@ -35,17 +35,21 @@ public class UsuarioController {
 
     @RequestMapping("/api/get_user")
     public Response getUser(@RequestBody Map<String, String> data) {
-    	return new Response("ok", usuarioService.getUser(data.get("email")));
+    	Usuario user = usuarioService.getUser(data.get("email"), data.get("senha"));
+    	if (user != null)
+    		return new Response("ok", user);
+    	return new Response("user not found or email and senha not match", null);
     }
 
     @RequestMapping("/api/add_user")
     public Response addUser(@RequestBody Map<String, String> data) {
-    	try {
-    		usuarioService.addUser(new Usuario(data.get("nome"), 
-    				data.get("email"), data.get("senha"), "", ""));
-            return new Response("ok", null);
-    	} catch (Exception e) {
-			return new Response("error", null);
-		}
+    	if (data.get("nome") == null || data.get("nome").equals("") || 
+    		data.get("email") == null || data.get("email").equals("") ||
+    		data.get("senha") == null || data.get("senha").equals(""))
+    		return new Response("user name, email or senha invalid", null);
+    	if (usuarioService.addUser(new Usuario(data.get("nome"), 
+    			data.get("email"), data.get("senha"), "{}", "{}")))
+    		return new Response("ok", null);
+    	return new Response("user exists", null);
     }
 }

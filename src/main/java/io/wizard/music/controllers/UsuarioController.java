@@ -61,11 +61,25 @@ public class UsuarioController {
     	return new Response("user not found or email and senha not match", null);
     }
     
+    @RequestMapping("/api/set_user_artistas")
+    public Response setUserArtistas(@RequestBody Map<String, String> data) {
+    	if (usuarioService.setUserArtistas(data.get("email"), data.get("senha"), data.get("artistas")))
+    		return new Response("ok", null);
+    	return new Response("user not found or email and senha not match", null);
+    }
+    
     @RequestMapping("/api/get_user_playlists")
     public Response getUserPlaylists(@RequestBody Map<String, String> data) {
     	Usuario user = usuarioService.getUser(data.get("email"), data.get("senha"));
     	if (user != null)
     		return new Response("ok", user.getPlaylists());
+    	return new Response("user not found or email and senha not match", null);
+    }
+    
+    @RequestMapping("/api/set_user_playlists")
+    public Response setUserPlaylists(@RequestBody Map<String, String> data) {
+    	if (usuarioService.setUserPlaylists(data.get("email"), data.get("senha"), data.get("playlists")))
+    		return new Response("ok", null);
     	return new Response("user not found or email and senha not match", null);
     }
 }

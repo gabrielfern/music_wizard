@@ -41,4 +41,24 @@ public class UsuarioService {
 		usuarioRepository.save(user);
 		return true;
 	}
+
+	public boolean setUserArtistas(String email, String senha, String artistas) {
+        if (this.autentica(email, senha)) {
+        	Usuario user = this.getUser(email);
+        	user.setArtistas(artistas);
+        	usuarioRepository.save(user);
+           	return true;
+        }
+        return false;
+	}
+	
+	public boolean setUserPlaylists(String email, String senha, String playlists) {
+        if (this.autentica(email, senha)) {
+        	Usuario user = this.getUser(email);
+        	user.setPlaylists(playlists);
+        	usuarioRepository.save(user);
+           	return true;
+        }
+        return false;
+	}
 }

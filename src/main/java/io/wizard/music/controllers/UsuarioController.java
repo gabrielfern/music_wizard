@@ -25,7 +25,7 @@ public class UsuarioController {
     		return new Response("ok", null);
     	return new Response("user not found", null);
     }
-    
+
     @RequestMapping("/api/autentica")
     public Response autentica(@RequestBody Map<String, String> data) {
     	if (usuarioService.autentica(data.get("email"), data.get("senha")))
@@ -43,16 +43,16 @@ public class UsuarioController {
 
     @RequestMapping("/api/add_user")
     public Response addUser(@RequestBody Map<String, String> data) {
-    	if (data.get("nome") == null || data.get("nome").equals("") || 
+    	if (data.get("nome") == null || data.get("nome").equals("") ||
     		data.get("email") == null || data.get("email").equals("") ||
     		data.get("senha") == null || data.get("senha").equals(""))
-    		return new Response("user name, email or senha invalid", null);
-    	if (usuarioService.addUser(new Usuario(data.get("nome"), 
+    		return new Response("user nome, email or senha invalid", null);
+    	if (usuarioService.addUser(new Usuario(data.get("nome"),
     			data.get("email"), data.get("senha"), "", "")))
     		return new Response("ok", null);
     	return new Response("user exists", null);
     }
-    
+
     @RequestMapping("/api/get_user_artistas")
     public Response getUserArtistas(@RequestBody Map<String, String> data) {
     	Usuario user = usuarioService.getUser(data.get("email"), data.get("senha"));
@@ -60,14 +60,14 @@ public class UsuarioController {
     		return new Response("ok", user.getArtistas());
     	return new Response("user not found or email and senha not match", null);
     }
-    
+
     @RequestMapping("/api/set_user_artistas")
     public Response setUserArtistas(@RequestBody Map<String, String> data) {
     	if (usuarioService.setUserArtistas(data.get("email"), data.get("senha"), data.get("artistas")))
     		return new Response("ok", null);
     	return new Response("user not found or email and senha not match", null);
     }
-    
+
     @RequestMapping("/api/get_user_playlists")
     public Response getUserPlaylists(@RequestBody Map<String, String> data) {
     	Usuario user = usuarioService.getUser(data.get("email"), data.get("senha"));
@@ -75,7 +75,7 @@ public class UsuarioController {
     		return new Response("ok", user.getPlaylists());
     	return new Response("user not found or email and senha not match", null);
     }
-    
+
     @RequestMapping("/api/set_user_playlists")
     public Response setUserPlaylists(@RequestBody Map<String, String> data) {
     	if (usuarioService.setUserPlaylists(data.get("email"), data.get("senha"), data.get("playlists")))

@@ -52,4 +52,20 @@ public class UsuarioController {
     		return new Response("ok", null);
     	return new Response("user exists", null);
     }
+    
+    @RequestMapping("/api/get_user_artistas")
+    public Response getUserArtistas(@RequestBody Map<String, String> data) {
+    	Usuario user = usuarioService.getUser(data.get("email"), data.get("senha"));
+    	if (user != null)
+    		return new Response("ok", user.getArtistas());
+    	return new Response("user not found or email and senha not match", null);
+    }
+    
+    @RequestMapping("/api/get_user_playlists")
+    public Response getUserPlaylists(@RequestBody Map<String, String> data) {
+    	Usuario user = usuarioService.getUser(data.get("email"), data.get("senha"));
+    	if (user != null)
+    		return new Response("ok", user.getPlaylists());
+    	return new Response("user not found or email and senha not match", null);
+    }
 }

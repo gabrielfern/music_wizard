@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import io.wizard.music.models.Usuario;
 
+
 @Repository
-public interface UsuarioRepository extends CrudRepository<Usuario, Integer> {
+public interface UsuarioRepository extends CrudRepository<Usuario, String> {
 
 }

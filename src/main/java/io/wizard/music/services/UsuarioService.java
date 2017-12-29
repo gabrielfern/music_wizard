@@ -3,10 +3,22 @@ package io.wizard.music.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import io.wizard.music.models.Usuario;
 import io.wizard.music.repositories.UsuarioRepository;
+
 
 @Service
 public class UsuarioService {
+
 	@Autowired
-	UsuarioRepository usuarios;
+	UsuarioRepository usuarioRepository;
+
+
+    public Usuario getUser(String email){
+        return usuarioRepository.findOne(email);
+    }
+
+	public void addUser(Usuario user) {
+		usuarioRepository.save(user);
+	}
 }

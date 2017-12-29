@@ -25,6 +25,13 @@ public class UsuarioController {
     		return new Response("ok", null);
     	return new Response("user not found", null);
     }
+    
+    @RequestMapping("/api/autentica")
+    public Response autentica(@RequestBody Map<String, String> data) {
+    	if (usuarioService.autentica(data.get("email"), data.get("senha")))
+    		return new Response("ok", null);
+    	return new Response("user email and senha not match", null);
+    }
 
     @RequestMapping("/api/get_user")
     public Response getUser(@RequestBody Map<String, String> data) {
@@ -34,8 +41,8 @@ public class UsuarioController {
     @RequestMapping("/api/add_user")
     public Response addUser(@RequestBody Map<String, String> data) {
     	try {
-    		usuarioService.addUser(new Usuario(data.get("nome"), data.get("email"), data.get("senha"),
-					data.get("artistas"), data.get("playlists")));
+    		usuarioService.addUser(new Usuario(data.get("nome"), 
+    				data.get("email"), data.get("senha"), "", ""));
             return new Response("ok", null);
     	} catch (Exception e) {
 			return new Response("error", null);

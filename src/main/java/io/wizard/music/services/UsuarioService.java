@@ -17,6 +17,13 @@ public class UsuarioService {
 	public boolean hasUser(String email) {
 		return usuarioRepository.exists(email);
 	}
+	
+	public boolean autentica(String email, String senha) {
+		Usuario user = usuarioRepository.findOne(email);
+		if (user.getSenha().equals(senha))
+			return true;
+		return false;
+	}
 
     public Usuario getUser(String email) {
         return usuarioRepository.findOne(email);

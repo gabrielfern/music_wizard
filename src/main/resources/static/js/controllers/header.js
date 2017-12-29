@@ -1,6 +1,7 @@
-app.controller('header', function($scope) {
+app.controller('header', function($scope, usuario) {
     $scope.home = 'active'
     $scope.about = ''
+    $scope.userButton = 'Login'
 
     $scope.$on('$routeChangeSuccess', function(_, {$$route}) {
         if ($$route.activeTab == 'home') {
@@ -14,4 +15,8 @@ app.controller('header', function($scope) {
             $scope.about = ''
         }
     })
+
+    $scope.userButtonAction = function() {
+        console.log('im here')
+    }
 })

@@ -31,6 +31,28 @@ app.service('usuario', function(artistas, playlists) {
         artistas.artistas = []
         playlists.playlists = []
     }
+    
+    this.updateArtistas = function() {
+    	this.request('get_user_artistas', {}, obj => {
+    		artistas.artistas = []
+    		obj = JSON.parse(obj.object)
+    	})
+    }
+    
+    this.saveArtistas = function(callback) {
+    	console.log(JSON.stringify(artistas))
+        this.request('set_user_artistas', {
+            artistas: JSON.stringify(artistas)
+        }, obj => {
+            if (obj.message == 'ok') {
+                if (callback)
+                    callback(true)
+            } else {
+                if (callback)
+                    callback(false)
+            }
+        })
+    }
 
     this.updatePlaylists = function() {
         this.request('get_user_playlists', {}, obj => {

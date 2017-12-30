@@ -2,7 +2,6 @@ app.controller('add-playlist', function($scope, playlists) {
     $scope.showAlert = false
     $scope.alertType = ''
     $scope.alertMsg = ''
-    $scope.bloqAddButton = true
 
     $scope.addPlaylist = function() {
         let result = playlists.addPlaylist($scope.playlistNome)

@@ -61,5 +61,4 @@ app.controller('header', function($scope, usuario) {
     $scope.closeLoginAlert = function() {
     	$scope.showLoginAlert = false
     }
-    global = usuario
 })

@@ -67,10 +67,10 @@
                             </div>
                             <div class="modal-body">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" ng-hide='userLoginModalShowAlert' ng-model='loginEmail' placeholder="Email" aria-label="Email">
+                                    <input type="text" class="form-control" ng-model='loginEmail' placeholder="Email">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="password" class="form-control" ng-hide='userLoginModalShowAlert' ng-model='loginSenha' placeholder="Senha" aria-label="Senha">
+                                    <input type="password" class="form-control" ng-model='loginSenha' placeholder="Senha">
                                 </div>
 			                    <div ng-show='showLoginAlert' class='alert alert-danger' role='alert'>
 			                    	Email ou senha errado
@@ -80,9 +80,9 @@
 								</div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" ng-hide='userLoginModalShowAlert' data-dismiss="modal">Criar Conta</button>
-                                <button type="button" class="btn btn-danger" ng-hide='userLoginModalShowAlert' data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-success" ng-hide='userLoginModalShowAlert' ng-disabled='!loginEmail || !loginSenha' ng-click='userLogar()'>Confirmar</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Criar Conta</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-success" ng-disabled='!loginEmail || !loginSenha' ng-click='userLogar()'>Confirmar</button>
                             </div>
                         </div>
                     </div>
@@ -91,12 +91,15 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="userCadastroModalLabel">Realize login</h5>
+                                <h5 class="modal-title" id="userCadastroModalLabel">Criar Conta</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
+                               	<div class="input-group mb-3">
+                                    <input type="text" class="form-control" ng-hide='userLoginModalShowAlert' ng-model='loginEmail' placeholder="Email" aria-label="Email">
+                                </div>
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" ng-hide='userLoginModalShowAlert' ng-model='loginEmail' placeholder="Email" aria-label="Email">
                                 </div>

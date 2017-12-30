@@ -59,9 +59,8 @@ app.service('usuario', function(artistas, playlists) {
     }
 
     this.saveArtistas = function(callback) {
-    	console.log(JSON.stringify(artistas))
         this.request('set_user_artistas', {
-            artistas: JSON.stringify(artistas)
+            object: JSON.stringify(artistas)
         }, obj => {
             if (obj.message == 'ok') {
                 if (callback)
@@ -91,7 +90,7 @@ app.service('usuario', function(artistas, playlists) {
 
     this.savePlaylists = function(callback) {
         this.request('set_user_playlists', {
-            playlists: JSON.stringify(playlists)
+        	object: JSON.stringify(playlists)
         }, obj => {
             if (obj.message == 'ok') {
                 if (callback)

@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.wizard.music.ArtistasRequest;
-import io.wizard.music.PlaylistsRequest;
+import io.wizard.music.Request;
 import io.wizard.music.Response;
 import io.wizard.music.models.Usuario;
 import io.wizard.music.services.UsuarioService;
@@ -64,8 +63,10 @@ public class UsuarioController {
     }
 
     @RequestMapping("/api/set_user_artistas")
-    public Response setUserArtistas(@RequestBody ArtistasRequest data) {
-    	if (usuarioService.setUserArtistas(data.getEmail(), data.getSenha(), data.getArtistas()))
+    public Response setUserArtistas(@RequestBody Request data) {
+    	System.out.println("Artistas -->");
+    	System.out.println(data.getObject());
+    	if (usuarioService.setUserArtistas(data.getEmail(), data.getSenha(), data.getObject()))
     		return new Response("ok", null);
     	return new Response("user not found or email and senha not match", null);
     }
@@ -79,8 +80,8 @@ public class UsuarioController {
     }
 
     @RequestMapping("/api/set_user_playlists")
-    public Response setUserPlaylists(@RequestBody PlaylistsRequest data) {
-    	if (usuarioService.setUserPlaylists(data.getEmail(), data.getSenha(), data.getPlaylists()))
+    public Response setUserPlaylists(@RequestBody Request data) {
+    	if (usuarioService.setUserPlaylists(data.getEmail(), data.getSenha(), data.getObject()))
     		return new Response("ok", null);
     	return new Response("user not found or email and senha not match", null);
     }

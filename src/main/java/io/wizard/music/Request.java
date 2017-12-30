@@ -1,12 +1,12 @@
 package io.wizard.music;
 
-public class PlaylistsRequest {
+public class Request {
 
 	private String email;
 
 	private String senha;
 
-	private String playlists;
+	private String object;
 
 
 	public String getEmail() {
@@ -25,11 +25,11 @@ public class PlaylistsRequest {
 		this.senha = senha;
 	}
 
-	public String getPlaylists() {
-		return playlists;
+	public String getObject() {
+		return object;
 	}
 
-	public void setPlaylists(String playlists) {
-		this.playlists = playlists;
+	public void setObject(String object) {
+		this.object = object;
 	}
 }

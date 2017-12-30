@@ -5,6 +5,7 @@ app.controller('artista', function($scope, $routeParams, artistas) {
     $scope.musica = $scope.artista.ultimaOuvida.musica
     $scope.favorito = $scope.artista.favorito
 
+
     $scope.favoritar = function() {
         if ($scope.artista.favorito) {
             $scope.artista.favorito = $scope.favorito = true
@@ -14,21 +15,25 @@ app.controller('artista', function($scope, $routeParams, artistas) {
             $scope.artista.favorito = $scope.favorito = true
         }
     }
+
     $scope.desfavoritar = function() {
         $scope.artista.favorito = $scope.favorito = false
     }
+
     $scope.$watch('nota', function() {
-        if ($scope.musica)
+        if ($scope.nota)
             $scope.artista.nota = $scope.nota
         else
-            $scope.artista.ultimaOuvida = -1
+            $scope.artista.nota = $scope.nota = -1
     })
+
     $scope.$watch('album', function() {
         if ($scope.musica)
             $scope.artista.ultimaOuvida.album = $scope.album
         else
             $scope.artista.ultimaOuvida = {}
     })
+
     $scope.$watch('musica', function() {
         if ($scope.musica)
             $scope.artista.ultimaOuvida.musica = $scope.musica

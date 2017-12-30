@@ -41,7 +41,7 @@
     <body style='background-color: #0c1219'>
         <div class='container'>
             <header class='header clearfix' ng-controller='header'>
-              <nav>
+                <nav>
                 <ul class='nav nav-pills float-right'>
                   <li class="nav-item">
                     <a href='/#!/' class='nav-link {{home}}'>Home</a>
@@ -53,30 +53,38 @@
                     <a href='/#!/' class='nav-link' data-toggle="modal" data-target="#userLoginModal">{{userButton}}</a>
                   </li>
                 </ul>
-              </nav>
-              <h3 class='text-muted'>Music Wizard</h3>
+                </nav>
+                <h3 class='text-muted'>Music Wizard</h3>
 
-              <div class="modal fade" id="userLoginModal" tabindex="-1" role="dialog" aria-labelledby="userLoginModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                              <h5 class="modal-title" id="userLoginModalLabel">Realize login</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                              </button>
-                          </div>
-                          <div class="modal-body">
-                              <div class="input-group mb-3">
-                                  <input type="text" class="form-control" placeholder="Email" aria-label="Email">
-                                  <input type="password" class="form-control" placeholder="Senha" aria-label="Senha">
-                              </div>
-                          </div>
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-success" data-dismiss="modal" ng-click='userButtonAction()'>Sim</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+                <div class="modal fade" id="userLoginModal" tabindex="-1" role="dialog" aria-labelledby="userLoginModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="userLoginModalLabel">Realize login</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" ng-hide='userLoginModalShowAlert' ng-model='loginEmail' placeholder="Email" aria-label="Email">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input type="password" class="form-control" ng-hide='userLoginModalShowAlert' ng-model='loginSenha' placeholder="Senha" aria-label="Senha">
+                                </div>
+                                <div ng-show='userLoginModalShowAlert' class='alert alert-{{userLoginModalAlertType}}' role='alert'>
+                                    {{userLoginModalAlertMsg}}
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" ng-hide='userLoginModalShowAlert' data-dismiss="modal" ng-click='clearTexts()'>Criar Conta</button>
+                                <button type="button" class="btn btn-danger" ng-hide='userLoginModalShowAlert' data-dismiss="modal" ng-click='clearTexts()'>Cancelar</button>
+                                <button type="button" class="btn btn-success" ng-hide='userLoginModalShowAlert' ng-disabled='!loginEmail || !loginSenha' ng-click='userButtonLogin()'>Confirmar</button>
+                                <button type="button" class="btn btn-success" ng-show='userLoginModalShowAlert' data-dismiss="modal" ng-click='clearTexts()'>Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </header>
 
             <div ng-view></div>

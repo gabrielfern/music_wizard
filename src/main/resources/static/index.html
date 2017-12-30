@@ -73,14 +73,14 @@
                                     <input type="password" class="form-control" ng-model='loginSenha' placeholder="Senha">
                                 </div>
 			                    <div ng-show='showLoginAlert' class='alert alert-danger' role='alert'>
-			                    	Email ou senha errado
+			                    	Usuário não existe ou Email/senha errado
 								    <button type='button' class='close' aria-label='Close' ng-click='closeLoginAlert()'>
 								        <span aria-hidden='true'>&times;</span>
 								    </button>
 								</div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Criar Conta</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click='userCadastroAction()'>Criar Conta</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                                 <button type="button" class="btn btn-success" ng-disabled='!loginEmail || !loginSenha' ng-click='userLogar()'>Confirmar</button>
                             </div>
@@ -98,25 +98,30 @@
                             </div>
                             <div class="modal-body">
                                	<div class="input-group mb-3">
-                                    <input type="text" class="form-control" ng-hide='userLoginModalShowAlert' ng-model='loginEmail' placeholder="Email" aria-label="Email">
+                                    <input type="text" class="form-control" ng-model='cadastroNome' placeholder="Nome">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" ng-hide='userLoginModalShowAlert' ng-model='loginEmail' placeholder="Email" aria-label="Email">
+                                    <input type="text" class="form-control" ng-model='cadastroEmail' placeholder="Email">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="password" class="form-control" ng-hide='userLoginModalShowAlert' ng-model='loginSenha' placeholder="Senha" aria-label="Senha">
+                                    <input type="password" class="form-control" ng-model='cadastroSenha' placeholder="Senha">
                                 </div>
-			                    <div ng-show='showLoginAlert' class='alert alert-danger' role='alert'>
-			                    	Email ou senha errado
-								    <button type='button' class='close' aria-label='Close' ng-click='closeLoginAlert()'>
+			                    <div ng-show='showCadastroFalhaAlert' class='alert alert-danger' role='alert'>
+			                    	Usuário já cadastrado
+								    <button type='button' class='close' aria-label='Close' ng-click='closeCadastroAlert()'>
+								        <span aria-hidden='true'>&times;</span>
+								    </button>
+								</div>
+								<div ng-show='showCadastroSucessoAlert' class='alert alert-success' role='alert'>
+			                    	Usuário cadastrado com sucesso
+								    <button type='button' class='close' aria-label='Close' ng-click='closeCadastroAlert()'>
 								        <span aria-hidden='true'>&times;</span>
 								    </button>
 								</div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" ng-hide='userLoginModalShowAlert' data-dismiss="modal">Criar Conta</button>
-                                <button type="button" class="btn btn-danger" ng-hide='userLoginModalShowAlert' data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-success" ng-hide='userLoginModalShowAlert' ng-disabled='!loginEmail || !loginSenha' ng-click='userLogar()'>Confirmar</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-success" ng-disabled='!cadastroNome || !cadastroEmail || !cadastroSenha' ng-click='userCadastrar()'>Confirmar</button>
                             </div>
                         </div>
                     </div>

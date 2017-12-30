@@ -5,6 +5,8 @@ app.controller('header', function($scope, usuario) {
     $scope.showLoginAlert = false
     $scope.showUserLogado = false
     $scope.userName = ''
+    $scope.showCadastroFalhaAlert = false
+    $scope.showCadastroSucessoAlert = false
 
 
     $scope.$on('$routeChangeSuccess', function(_, {$$route}) {
@@ -23,7 +25,7 @@ app.controller('header', function($scope, usuario) {
     $scope.userButtonAction = function() {
     	if ($scope.userButtonText == 'Logar') {
         	$('#userLoginModal').modal()
-        	$scope.clearTexts()
+        	$scope.clearLoginTexts()
         	$scope.showLoginAlert = false
     	} else {
     		$scope.userDeslogar()
@@ -54,11 +56,42 @@ app.controller('header', function($scope, usuario) {
     	$scope.showUserLogado = false
     }
 
-    $scope.clearTexts = function() {
+    $scope.clearLoginTexts = function() {
     	$scope.loginEmail = $scope.loginSenha = ''
     }
 
     $scope.closeLoginAlert = function() {
     	$scope.showLoginAlert = false
+    }
+    
+    $scope.closeCadastroAlert = function() {
+        $scope.showCadastroFalhaAlert = false
+        $scope.showCadastroSucessoAlert = false
+    }
+    
+    $scope.clearCadastroTexts = function() {
+    	$scope.cadastroNome = $scope.cadastroEmail = $scope.cadastroSenha = ''
+    }
+    
+    $scope.userCadastroAction = function() {
+    	$('#userCadastroModal').modal()
+    	$scope.clearCadastroTexts()
+        $scope.showCadastroFalhaAlert = false
+        $scope.showCadastroSucessoAlert = false
+    }
+    
+    $scope.userCadastrar = function() {
+    	usuario.addUser($scope.cadastroNome, $scope.cadastroEmail, $scope.cadastroSenha, resp => {
+    		if (resp) {
+    			$scope.clearCadastroTexts()
+    			$scope.showCadastroFalhaAlert = false
+    			$scope.showCadastroSucessoAlert = true
+    			$scope.$apply()
+    		} else {
+    			$scope.showCadastroSucessoAlert = false
+    			$scope.showCadastroFalhaAlert = true
+    			$scope.$apply()
+    		}
+    	})
     }
 })

@@ -4,7 +4,7 @@ app.service('artista', function(album) {
         this.url = url || ''
         this.albuns = []
         this.nota = -1
-        this.ultimaOuvida = ''
+        this.ultimaOuvida = null
         this.favorito = false
 
         this.addMusica = function(nome, artista, albumNome, ano, duracao) {

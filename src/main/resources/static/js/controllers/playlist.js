@@ -1,4 +1,4 @@
-app.controller('playlist', function($scope, $routeParams, playlists) {
+app.controller('playlist', function($scope, $routeParams, usuario, playlists) {
     $scope.playlist = playlists.playlists[playlists.indexOf($routeParams.nome)]
     $scope.musicToDelete = {}
     $scope.artistas = playlists.getArtistas()
@@ -45,11 +45,13 @@ app.controller('playlist', function($scope, $routeParams, playlists) {
         $scope.playlist.remMusica($scope.musicToDelete.nome,
                                   $scope.musicToDelete.artista,
                                   $scope.musicToDelete.album)
+        usuario.savePlaylists()
     }
     $scope.adicionar = function() {
         $scope.playlist.addMusica($scope.musica.nome,
                                   $scope.artista.nome,
                                   $scope.album.nome)
+        usuario.savePlaylists()
         $scope.musica = $scope.artista = $scope.album = null
     }
 })

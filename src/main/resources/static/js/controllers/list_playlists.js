@@ -1,4 +1,4 @@
-app.controller('list-playlists', function($scope, playlists) {
+app.controller('list-playlists', function($scope, usuario, playlists) {
     $scope.playlists = playlists.playlists
     $scope.remPlaylistNome = ''
 
@@ -7,5 +7,6 @@ app.controller('list-playlists', function($scope, playlists) {
     }
     $scope.remPlaylist = function() {
         playlists.remPlaylist($scope.remPlaylistNome)
+        usuario.savePlaylists()
     }
 })

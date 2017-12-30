@@ -1,4 +1,4 @@
-app.controller('add-artista', function($scope, artistas) {
+app.controller('add-artista', function($scope, usuario, artistas) {
     $scope.showAlert = false
     $scope.alertType = ''
     $scope.alertMsg = ''
@@ -8,6 +8,7 @@ app.controller('add-artista', function($scope, artistas) {
 
         let result = artistas.addArtista($scope.artistaNome, $scope.artistaImgUrl)
         if (result) {
+        	usuario.saveArtistas()
             $scope.alertType = 'success'
             $scope.showAlert = true
             $scope.alertMsg = 'Artista cadastrado com sucesso'

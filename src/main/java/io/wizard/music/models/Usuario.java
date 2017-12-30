@@ -18,10 +18,10 @@ public class Usuario {
 	@Column
 	private String senha;
 
-	@Column
+	@Column(columnDefinition="text")
 	private String artistas;
 
-	@Column
+	@Column(columnDefinition="text")
 	private String playlists;
 
 

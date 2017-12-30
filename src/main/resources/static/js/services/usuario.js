@@ -5,6 +5,23 @@ app.service('usuario', function(artistas, playlists) {
         senha: ''
     }
 
+
+    this.addUser = function(nome, email, senha, callback) {
+        this.request('add_user', {
+        	nome: nome,
+            email: email,
+            senha: senha
+        }, obj => {
+            if (obj.message == 'ok') {
+                if (callback)
+                    callback(true)
+            } else {
+                if (callback)
+                    callback(false)
+            }
+        })
+    }
+
     this.logar = function(email, senha, callback) {
         this.request('autentica', {
             email: email,

@@ -50,7 +50,7 @@
                     <a href='/#!/about' class='nav-link {{about}}'>About</a>
                   </li>
                   <li class='nav-item'>
-                    <a href='/#!/' class='nav-link' data-toggle="modal" data-target="#userLoginModal">{{userButton}}</a>
+                    <a href='/#!/' class='nav-link' ng-click='userButtonAction()'>{{userButtonText}}</a>
                   </li>
                 </ul>
                 </nav>
@@ -72,15 +72,17 @@
                                 <div class="input-group mb-3">
                                     <input type="password" class="form-control" ng-hide='userLoginModalShowAlert' ng-model='loginSenha' placeholder="Senha" aria-label="Senha">
                                 </div>
-                                <div ng-show='userLoginModalShowAlert' class='alert alert-{{userLoginModalAlertType}}' role='alert'>
-                                    {{userLoginModalAlertMsg}}
-                                </div>
+			                    <div ng-show='showLoginAlert' class='alert alert-danger' role='alert'>
+			                    	Email ou senha errado
+								    <button type='button' class='close' aria-label='Close' ng-click='closeLoginAlert()'>
+								        <span aria-hidden='true'>&times;</span>
+								    </button>
+								</div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" ng-hide='userLoginModalShowAlert' data-dismiss="modal" ng-click='clearTexts()'>Criar Conta</button>
-                                <button type="button" class="btn btn-danger" ng-hide='userLoginModalShowAlert' data-dismiss="modal" ng-click='clearTexts()'>Cancelar</button>
-                                <button type="button" class="btn btn-success" ng-hide='userLoginModalShowAlert' ng-disabled='!loginEmail || !loginSenha' ng-click='userButtonLogin()'>Confirmar</button>
-                                <button type="button" class="btn btn-success" ng-show='userLoginModalShowAlert' data-dismiss="modal" ng-click='clearTexts()'>Ok</button>
+                                <button type="button" class="btn btn-primary" ng-hide='userLoginModalShowAlert' data-dismiss="modal">Criar Conta</button>
+                                <button type="button" class="btn btn-danger" ng-hide='userLoginModalShowAlert' data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-success" ng-hide='userLoginModalShowAlert' ng-disabled='!loginEmail || !loginSenha' ng-click='userLogar()'>Confirmar</button>
                             </div>
                         </div>
                     </div>

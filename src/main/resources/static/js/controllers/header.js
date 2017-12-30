@@ -1,8 +1,8 @@
 app.controller('header', function($scope, usuario) {
     $scope.home = 'active'
     $scope.about = ''
-    $scope.userButton = 'Logar'
-    $scope.userLoginModalShowAlert = false
+    $scope.userButtonText = 'Logar'
+    $scope.showLoginAlert = false
 
 
     $scope.$on('$routeChangeSuccess', function(_, {$$route}) {
@@ -18,37 +18,40 @@ app.controller('header', function($scope, usuario) {
         }
     })
 
-    $scope.userButtonLogin = function() {
-        let headers = {
-            'Content-Type': 'application/json'
-        },
-        body = {
-            email: $scope.loginEmail,
-            senha: $scope.loginSenha
-        }
-        console.log($scope.loginEmail, $scope.loginEmail)
-        fetch('/api/autentica', {
-            method: 'POST',
-            body: JSON.stringify(body),
-            headers: headers
-        }).then(resp => resp.json().then(obj => {
-            if (obj.message == 'ok') {
-                usuario.logado = true
-                $scope.userLoginModalShowAlert = true
-                $scope.userLoginModalAlertType = 'success'
-                $scope.userLoginModalAlertMsg = 'Logado com sucesso'
-            } else {
-                $scope.userLoginModalShowAlert = true
-                $scope.userLoginModalAlertType = 'danger'
-                $scope.userLoginModalAlertMsg = 'Email ou Senha não combinam'
-            }
-        }))
+    $scope.userButtonAction = function() {
+    	if ($scope.userButtonText == 'Logar') {
+        	$('#userLoginModal').modal()
+        	$scope.clearTexts()
+        	$scope.showLoginAlert = false
+    	} else {
+    		$scope.userDeslogar()
+    	}
     }
+
+    $scope.userLogar = function() {
+    	usuario.logar($scope.loginEmail, $scope.loginSenha, resp => {
+    		if (resp) {
+    			$scope.userButtonText = 'Deslogar'
+    			$('#userLoginModal').modal('hide')
+    			$scope.$apply()
+    		} else {
+    			$scope.showLoginAlert = true
+    			$scope.$apply()
+    		}
+    	})
+    }
+
+    $scope.userDeslogar = function() {
+    	usuario.deslogar()
+    	$scope.userButtonText = 'Logar'
+    }
+
     $scope.clearTexts = function() {
-        $scope.loginEmail = $scope.loginSenha = ''
+    	$scope.loginEmail = $scope.loginSenha = ''
     }
+
     $scope.closeLoginAlert = function() {
-        $scope.userLoginModalShowAlert = false
+    	$scope.showLoginAlert = false
     }
-    global = usuario
+    global = $scope
 })

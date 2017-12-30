@@ -1,8 +1,7 @@
 app.controller('artista', function($scope, $routeParams, artistas) {
     $scope.artista = artistas.artistas[artistas.indexOf($routeParams.nome)]
     $scope.nota = $scope.artista.nota
-    $scope.album = $scope.artista.ultimaOuvida.album
-    $scope.musica = $scope.artista.ultimaOuvida.musica
+    $scope.musica = $scope.artista.ultimaOuvida
     $scope.favorito = $scope.artista.favorito
 
 
@@ -27,17 +26,7 @@ app.controller('artista', function($scope, $routeParams, artistas) {
             $scope.artista.nota = $scope.nota = -1
     })
 
-    $scope.$watch('album', function() {
-        if ($scope.musica)
-            $scope.artista.ultimaOuvida.album = $scope.album
-        else
-            $scope.artista.ultimaOuvida = {}
-    })
-
     $scope.$watch('musica', function() {
-        if ($scope.musica)
-            $scope.artista.ultimaOuvida.musica = $scope.musica
-        else
-            $scope.artista.ultimaOuvida.musica = {}
+    	$scope.artista.ultimaOuvida = $scope.musica
     })
 })

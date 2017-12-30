@@ -50,6 +50,17 @@ app.service('usuario', function(artistas, playlists) {
         playlists.playlists = []
     }
     
+    this.getUserName = function(callback) {
+    	if (this.logado) {
+            this.request('get_user', {}, obj => {
+                if (obj.message == 'ok') {
+                    if (callback)
+                        callback(obj.object.nome)
+                }
+            })
+    	}
+    }
+    
     this.updateArtistas = function() {
     	if (this.logado) {
         	this.request('get_user_artistas', {}, obj => {

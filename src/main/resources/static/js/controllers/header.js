@@ -3,6 +3,8 @@ app.controller('header', function($scope, usuario) {
     $scope.about = ''
     $scope.userButtonText = 'Logar'
     $scope.showLoginAlert = false
+    $scope.showUserLogado = false
+    $scope.userName = ''
 
 
     $scope.$on('$routeChangeSuccess', function(_, {$$route}) {
@@ -33,6 +35,11 @@ app.controller('header', function($scope, usuario) {
     		if (resp) {
     			$scope.userButtonText = 'Deslogar'
     			$('#userLoginModal').modal('hide')
+    			usuario.getUserName(name => {
+    				$scope.userName = name
+    	  			$scope.showUserLogado = true
+    	  			$scope.$apply()
+    			})
     			$scope.$apply()
     		} else {
     			$scope.showLoginAlert = true
@@ -44,6 +51,7 @@ app.controller('header', function($scope, usuario) {
     $scope.userDeslogar = function() {
     	usuario.deslogar()
     	$scope.userButtonText = 'Logar'
+    	$scope.showUserLogado = false
     }
 
     $scope.clearTexts = function() {
@@ -53,5 +61,5 @@ app.controller('header', function($scope, usuario) {
     $scope.closeLoginAlert = function() {
     	$scope.showLoginAlert = false
     }
-    global = $scope
+    global = usuario
 })

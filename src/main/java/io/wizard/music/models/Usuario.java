@@ -8,72 +8,72 @@ import javax.persistence.Id;
 @Entity
 public class Usuario {
 
-	@Column
-	private String nome;
+    @Column
+    private String nome;
 
-	@Id
-	@Column
-	private String email;
+    @Id
+    @Column
+    private String email;
 
-	@Column
-	private String senha;
+    @Column
+    private String senha;
 
-	@Column(columnDefinition="text")
-	private String artistas;
+    @Column(columnDefinition="text")
+    private String artistas;
 
-	@Column(columnDefinition="text")
-	private String playlists;
+    @Column(columnDefinition="text")
+    private String playlists;
 
 
-	public Usuario() {
-		
-	}
-	
-	public Usuario(String nome, String email, String senha, String artistas, String playlists) {
-		this.nome = nome;
-		this.email = email;
-		this.senha = senha;
-		this.artistas = artistas;
-		this.playlists = playlists;
-	}
+    public Usuario() {
 
-	public String getNome() {
-		return nome;
-	}
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public Usuario(String nome, String email, String senha, String artistas, String playlists) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.artistas = artistas;
+        this.playlists = playlists;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public String getSenha() {
-		return senha;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getArtistas() {
-		return artistas;
-	}
+    public String getSenha() {
+        return senha;
+    }
 
-	public void setArtistas(String artistas) {
-		this.artistas = artistas;
-	}
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-	public String getPlaylists() {
-		return playlists;
-	}
+    public String getArtistas() {
+        return artistas;
+    }
 
-	public void setPlaylists(String playlists) {
-		this.playlists = playlists;
-	}
+    public void setArtistas(String artistas) {
+        this.artistas = artistas;
+    }
+
+    public String getPlaylists() {
+        return playlists;
+    }
+
+    public void setPlaylists(String playlists) {
+        this.playlists = playlists;
+    }
 }

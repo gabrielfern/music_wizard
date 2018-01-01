@@ -14,7 +14,7 @@ app.controller('add-musica', function($scope, usuario, artistas) {
         let result = artistas.addMusica($scope.musica, $scope.artista.nome, $scope.album, $scope.ano, $scope.duracao)
 
         if (result) {
-        	usuario.saveArtistas()
+            usuario.saveArtistas()
             $scope.alertType = 'success'
             $scope.showAlert = true
             $scope.alertMsg = 'Música adicionada com sucesso'

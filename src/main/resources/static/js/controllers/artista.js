@@ -30,7 +30,7 @@ app.controller('artista', function($scope, $routeParams, usuario, artistas) {
     })
 
     $scope.$watch('musica', function() {
-    	$scope.artista.ultimaOuvida = $scope.musica
-    	usuario.saveArtistas()
+        $scope.artista.ultimaOuvida = $scope.musica
+        usuario.saveArtistas()
     })
 })

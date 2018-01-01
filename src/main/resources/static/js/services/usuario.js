@@ -8,7 +8,7 @@ app.service('usuario', function(artistas, playlists) {
 
     this.addUser = function(nome, email, senha, callback) {
         this.request('add_user', {
-        	nome: nome,
+            nome: nome,
             email: email,
             senha: senha
         }, obj => {
@@ -49,47 +49,47 @@ app.service('usuario', function(artistas, playlists) {
         artistas.artistas = []
         playlists.playlists = []
     }
-    
+
     this.getUserName = function(callback) {
-    	if (this.logado) {
+        if (this.logado) {
             this.request('get_user', {}, obj => {
                 if (obj.message == 'ok') {
                     if (callback)
                         callback(obj.object.nome)
                 }
             })
-    	}
+        }
     }
-    
+
     this.updateArtistas = function() {
-    	if (this.logado) {
-        	this.request('get_user_artistas', {}, obj => {
-        		artistas.artistas = []
-        		if (obj.object) {
-        	   		obj = JSON.parse(obj.object)
-            		if (obj.artistas) {
-            			for (let artista of obj.artistas) {
-            				artistas.addArtista(artista.nome, artista.url)
-            				let index = artistas.indexOf(artista.nome)
-            				artistas.artistas[index].nota = artista.nota
-            				artistas.artistas[index].ultimaOuvida = artista.ultimaOuvida
-            				artistas.artistas[index].favorito = artista.favorito
-            				
-            				for (let album of artista.albuns) {
-            					for (let musica of album.musicas) {
-            						artistas.addMusica(musica.nome, musica.artista, 
-            								musica.album, musica.ano, musica.duracao)
-            					}
-            				}
-            			}
-            		}
-        		}
-        	})
-    	}
+        if (this.logado) {
+            this.request('get_user_artistas', {}, obj => {
+                artistas.artistas = []
+                if (obj.object) {
+                       obj = JSON.parse(obj.object)
+                    if (obj.artistas) {
+                        for (let artista of obj.artistas) {
+                            artistas.addArtista(artista.nome, artista.url)
+                            let index = artistas.indexOf(artista.nome)
+                            artistas.artistas[index].nota = artista.nota
+                            artistas.artistas[index].ultimaOuvida = artista.ultimaOuvida
+                            artistas.artistas[index].favorito = artista.favorito
+
+                            for (let album of artista.albuns) {
+                                for (let musica of album.musicas) {
+                                    artistas.addMusica(musica.nome, musica.artista,
+                                            musica.album, musica.ano, musica.duracao)
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+        }
     }
 
     this.saveArtistas = function(callback) {
-    	if (this.logado) {
+        if (this.logado) {
             this.request('set_user_artistas', {
                 object: JSON.stringify(artistas)
             }, obj => {
@@ -101,11 +101,11 @@ app.service('usuario', function(artistas, playlists) {
                         callback(false)
                 }
             })
-    	}
+        }
     }
 
     this.updatePlaylists = function() {
-    	if (this.logado) {
+        if (this.logado) {
             this.request('get_user_playlists', {}, obj => {
                 playlists.playlists = []
                 if (obj.object) {
@@ -119,13 +119,13 @@ app.service('usuario', function(artistas, playlists) {
                     }
                 }
             })
-    	}
+        }
     }
 
     this.savePlaylists = function(callback) {
-    	if (this.logado) {
+        if (this.logado) {
             this.request('set_user_playlists', {
-            	object: JSON.stringify(playlists)
+                object: JSON.stringify(playlists)
             }, obj => {
                 if (obj.message == 'ok') {
                     if (callback)
@@ -135,7 +135,7 @@ app.service('usuario', function(artistas, playlists) {
                         callback(false)
                 }
             })
-    	}
+        }
     }
 
     this.request = function(resource, body, callback) {

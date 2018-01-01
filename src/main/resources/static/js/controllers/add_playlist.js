@@ -7,7 +7,7 @@ app.controller('add-playlist', function($scope, usuario, playlists) {
         let result = playlists.addPlaylist($scope.playlistNome)
 
         if (result) {
-        	usuario.savePlaylists()
+            usuario.savePlaylists()
             $scope.alertType = 'success'
             $scope.showAlert = true
             $scope.alertMsg = 'Playlist adicionada com sucesso'

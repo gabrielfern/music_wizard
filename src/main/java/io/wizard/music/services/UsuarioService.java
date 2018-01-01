@@ -10,55 +10,55 @@ import io.wizard.music.repositories.UsuarioRepository;
 @Service
 public class UsuarioService {
 
-	@Autowired
-	UsuarioRepository usuarioRepository;
+    @Autowired
+    UsuarioRepository usuarioRepository;
 
 
-	public boolean hasUser(String email) {
-		return usuarioRepository.exists(email);
-	}
-	
+    public boolean hasUser(String email) {
+        return usuarioRepository.exists(email);
+    }
+
     private Usuario getUser(String email) {
         return usuarioRepository.findOne(email);
     }
 
     public Usuario getUser(String email, String senha) {
         if (this.autentica(email, senha))
-        	return this.getUser(email);
+            return this.getUser(email);
         return null;
     }
 
-	public boolean autentica(String email, String senha) {
-		if (this.hasUser(email))
-			if (this.getUser(email).getSenha().equals(senha))
-				return true;
-		return false;
-	}
+    public boolean autentica(String email, String senha) {
+        if (this.hasUser(email))
+            if (this.getUser(email).getSenha().equals(senha))
+                return true;
+        return false;
+    }
 
-	public boolean addUser(Usuario user) {
-		if (this.hasUser(user.getEmail()))
-			return false;
-		usuarioRepository.save(user);
-		return true;
-	}
+    public boolean addUser(Usuario user) {
+        if (this.hasUser(user.getEmail()))
+            return false;
+        usuarioRepository.save(user);
+        return true;
+    }
 
-	public boolean setUserArtistas(String email, String senha, String artistas) {
+    public boolean setUserArtistas(String email, String senha, String artistas) {
         if (this.autentica(email, senha)) {
-        	Usuario user = this.getUser(email);
-        	user.setArtistas(artistas);
-        	usuarioRepository.save(user);
-           	return true;
+            Usuario user = this.getUser(email);
+            user.setArtistas(artistas);
+            usuarioRepository.save(user);
+               return true;
         }
         return false;
-	}
-	
-	public boolean setUserPlaylists(String email, String senha, String playlists) {
+    }
+
+    public boolean setUserPlaylists(String email, String senha, String playlists) {
         if (this.autentica(email, senha)) {
-        	Usuario user = this.getUser(email);
-        	user.setPlaylists(playlists);
-        	usuarioRepository.save(user);
-           	return true;
+            Usuario user = this.getUser(email);
+            user.setPlaylists(playlists);
+            usuarioRepository.save(user);
+               return true;
         }
         return false;
-	}
+    }
 }
